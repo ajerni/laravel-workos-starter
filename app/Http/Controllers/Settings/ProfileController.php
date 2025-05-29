@@ -6,11 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Inertia\Response;
 use Laravel\WorkOS\Http\Requests\AuthKitAccountDeletionRequest;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Log;
 use WorkOS\UserManagement;
 
 class ProfileController extends Controller
@@ -63,22 +62,22 @@ class ProfileController extends Controller
             // Configure WorkOS SDK
             \WorkOS\WorkOS::setApiKey(config('services.workos.secret'));
             \WorkOS\WorkOS::setClientId(config('services.workos.client_id'));
-            
+
             // Split the name into first and last name
             $nameParts = explode(' ', trim($user->name), 2);
             $firstName = $nameParts[0] ?? '';
             $lastName = $nameParts[1] ?? '';
-            
+
             // Get the WorkOS user ID from the user's profile using the stored workos_id
             if ($user->workos_id) {
                 // Update the user in WorkOS using the stored workos_id
-                $userManagement = new UserManagement();
+                $userManagement = new UserManagement;
                 $userManagement->updateUser(
                     $user->workos_id,
                     $firstName,
                     $lastName
                 );
-                
+
                 Log::info('Successfully synced user to WorkOS', [
                     'user_id' => $user->id,
                     'workos_user_id' => $user->workos_id,
@@ -93,10 +92,10 @@ class ProfileController extends Controller
             }
         } catch (\Exception $e) {
             // Log the error but don't fail the local update
-            Log::error('Failed to sync user to WorkOS: ' . $e->getMessage(), [
+            Log::error('Failed to sync user to WorkOS: '.$e->getMessage(), [
                 'user_id' => $user->id,
                 'email' => $user->email,
-                'exception' => $e->getTraceAsString()
+                'exception' => $e->getTraceAsString(),
             ]);
         }
     }

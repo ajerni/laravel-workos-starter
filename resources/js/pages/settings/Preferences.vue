@@ -16,19 +16,22 @@ const breadcrumbItems: BreadcrumbItem[] = [
 </script>
 
 <template>
-    <AppLayout :breadcrumbs="breadcrumbItems">
-        <Head title="Preferences" />
+  <AppLayout :breadcrumbs="breadcrumbItems">
+    <Head title="Preferences" />
 
-        <SettingsLayout>
-            <div class="space-y-6">
-                <HeadingSmall title="Preferences" description="Manage your personal preferences and settings" />
+    <SettingsLayout>
+      <div class="space-y-6">
+        <HeadingSmall
+          title="Preferences"
+          description="Manage your personal preferences and settings"
+        />
                 
-                <div class="rounded-lg border border-neutral-200 p-6">
-                    <p class="text-sm text-neutral-600">
-                        Personal preference settings will be available here soon.
-                    </p>
-                </div>
-            </div>
-        </SettingsLayout>
-    </AppLayout>
+        <div class="rounded-lg border border-neutral-200 p-6">
+          <p class="text-sm text-neutral-600">
+            Personal preference settings will be available here soon.
+          </p>
+        </div>
+      </div>
+    </SettingsLayout>
+  </AppLayout>
 </template> 

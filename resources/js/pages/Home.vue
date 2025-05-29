@@ -7,6 +7,7 @@ import AppLayout from '@/layouts/AppLayout.vue'
 import { type BreadcrumbItem } from '@/types'
 import { Head } from '@inertiajs/vue3'
 import { ref, onMounted } from 'vue'
+import FaqFileManager from '@/components/FaqFileManager.vue'
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
@@ -42,9 +43,7 @@ onMounted(() => {
     title="Home"
   >
     <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-      <div class="rounded-xl border border-neutral-200 p-8 text-center text-lg text-muted-foreground">
-        Welcome to the Home page! Placeholder content goes here.
-      </div>
+      <FaqFileManager />
       <Card class="w-full">
         <CardHeader>
           <CardTitle>
