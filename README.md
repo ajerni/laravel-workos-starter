@@ -2,6 +2,8 @@
 
 A modern Laravel 12 starter project using Inertia.js, Vue 3, WorkOS authentication, and a beautiful UI toolkit.
 
+Gonna be much more...
+
 ## Features
 
 - **Laravel 12** – Backend framework with PHP 8.4
